@@ -65,7 +65,38 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	  /* Infinite loop */
+	  /* USER CODE BEGIN WHILE */
+	  uint32_t counter = 0; //dùng uint32_t để ko bị tràn số = 4 tỉ
 
+	  while (1)
+	  {
+	      counter++;
+
+	      if (counter <= 4)   // 5s RED
+	      {
+	          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+	          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+	          HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+	      }
+	      else if (counter <= 6)  // 2s YELLOW
+	      {
+	          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+	          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
+	          HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+	      }
+	      else if (counter <= 9) // 3s GREEN
+	      {
+	          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+	          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+	          HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
+	      }
+
+	      if (counter > 9) // reset sau 10s
+	          counter = 0;
+
+	      HAL_Delay(1000);
+	  }
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -89,39 +120,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
+}
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  uint32_t counter = 0; //dùng uint32_t để ko bị tràn số = 4 tỉ
 
-  while (1)
-  {
-      counter++;
 
-      if (counter <= 4)   // 5s RED
-      {
-          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
-          HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
-      }
-      else if (counter <= 6)  // 2s YELLOW
-      {
-          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
-          HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
-      }
-      else if (counter <= 9) // 3s GREEN
-      {
-          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
-          HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
-      }
-
-      if (counter > 9) // reset sau 10s
-          counter = 0;
-
-      HAL_Delay(1000);
-  }
 
 
 /**
