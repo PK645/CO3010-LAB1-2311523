@@ -64,30 +64,6 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
 
-	  /* Infinite loop */
-	  /* USER CODE BEGIN WHILE */
-	  uint32_t counter = 0; //dùng uint32_t để ko bị tràn số = 4 tỉ
-
-	  while (1)
-	  {
-	      counter++;
-
-	      if (counter <= 2)   // 2s RED
-	      {
-	          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-	          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
-	      }
-	      else if (counter <= 4)  // 2s YELLOW
-	      {
-	          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-	          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
-	      }
-
-	      if (counter > 4) // reset sau 10s
-	          counter = 0;
-
-	      HAL_Delay(1000);
-	  }
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -113,6 +89,33 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  uint32_t counter = 0; //dùng uint32_t để ko bị tràn số = 4 tỉ
+
+  while (1)
+  {
+      counter++;
+
+      if (counter <= 2)   // 2s RED
+      {
+          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+      }
+      else if (counter <= 4)  // 2s YELLOW
+      {
+          HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+          HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
+      }
+
+      if (counter > 4) // reset sau 10s
+          counter = 0;
+
+      HAL_Delay(1000);
+  }
 
   /* USER CODE END 3 */
 }
