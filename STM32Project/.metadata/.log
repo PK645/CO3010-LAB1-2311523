@@ -1,0 +1,29 @@
+!SESSION 2025-09-08 16:49:13.198 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_VN
+Framework arguments:  -keyring /Users/khanh/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -keyring /Users/khanh/.eclipse_keyring -data /Users/khanh/CO3010/CO3010-LAB1-2311523/STM32Project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-09-08 16:49:22.138
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-09-08 16:49:22.140
+!MESSAGE Log4j2 initialized with config file /Users/khanh/CO3010/CO3010-LAB1-2311523/STM32Project/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2025-09-08 16:49:26.419
+!MESSAGE ProjectImporter: mdfind -name lsregister didn't returned anything
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-09-08 16:49:26.425
+!MESSAGE Started RMI Server, listening on port 41338
+
+!ENTRY org.eclipse.core.resources 4 77 2025-09-08 16:52:25.139
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2025-09-08 16:52:25.144
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2025-09-08 16:52:25.144
+!MESSAGE /Users/khanh/CO3010/CO3010-LAB1-2311523/STM32Project overlaps the workspace location: /Users/khanh/CO3010/CO3010-LAB1-2311523/STM32Project
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-09-08 16:55:20.487
+!MESSAGE Indexed 'LAB1_Exercise' (17 sources, 78 headers) in 4.91 sec: 3,643 declarations; 13,356 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
