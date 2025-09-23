@@ -167,7 +167,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   uint32_t counter = 0;
   unsigned counter_num = 9;
-  int bool_chay = 0;
   while (1)
   {
       // --- Pha 1: 5s Gr 1 RED, 3s Gr 2 GREEN

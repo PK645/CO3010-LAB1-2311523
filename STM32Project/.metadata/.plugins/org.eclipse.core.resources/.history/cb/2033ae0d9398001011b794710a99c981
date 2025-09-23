@@ -119,7 +119,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   uint32_t counter = 0;
-  int counter_num = 9;
+  unsigned counter_num = 9;
   while (1)
   {
       // --- Pha 1: 5s Gr 1 RED, 3s Gr 2 GREEN
@@ -179,14 +179,11 @@ int main(void)
           HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, GPIO_PIN_SET);
           HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_RESET);
       }
-
-      // Cập nhật số trên 7SEG
-          counter_num--;
-          if (counter_num < 0) counter_num = 9;  // reset về 9
-
-          // Chu kỳ
-          counter++;
-          if (counter >= 14) counter = 0;        // reset chu kỳ đèn giao thông
+      counter_num = 9 - counter;
+      // Reset counter để lặp lại chu kỳ
+      if (counter >= 10)
+          counter = 0;
+      counter ++;
       HAL_Delay(1000);
   }
 }

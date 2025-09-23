@@ -83,8 +83,6 @@ void Error_Handler(void);
 #define LED7_F_GPIO_Port GPIOB
 #define LED7_G_Pin GPIO_PIN_6
 #define LED7_G_GPIO_Port GPIOB
-#define LED7_H_Pin GPIO_PIN_7
-#define LED7_H_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
