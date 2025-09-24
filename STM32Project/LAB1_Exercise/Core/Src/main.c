@@ -68,12 +68,11 @@ void setNumberOnClock(int index) {
 void updateClock(int hour, int minute, int second) {
     clearAllClock();
 
-    int pos_sec  = second / 5 + 1;      // 0–11
-    int pos_min  = minute / 5 + 1;      // 0–11
-    int pos_hour = (hour % 12) + 1;
+    int pos_sec  = second / 5 ;      // 0–11
+    int pos_min  = minute / 5 ;      // 0–11
+    int pos_hour = (hour % 12) ;
 
     uint16_t led_map[12] = {
-    	LED1_Pin,
         LED2_Pin,
         LED3_Pin,
         LED4_Pin,
@@ -84,7 +83,8 @@ void updateClock(int hour, int minute, int second) {
         LED9_Pin,
         LED10_Pin,
         LED11_Pin,
-        LED12_Pin
+		LED12_Pin,
+		LED1_Pin
     };
 
     HAL_GPIO_WritePin(GPIOA, led_map[pos_sec], GPIO_PIN_SET);
