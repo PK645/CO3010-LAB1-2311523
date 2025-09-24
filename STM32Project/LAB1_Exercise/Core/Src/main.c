@@ -54,7 +54,35 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void clearAllClock(void) {
+    HAL_GPIO_WritePin(GPIOA, LED1_Pin|LED2_Pin|LED3_Pin|LED4_Pin
+                            |LED5_Pin|LED6_Pin|LED7_Pin|LED8_Pin
+                            |LED9_Pin|LED10_Pin|LED11_Pin|LED12_Pin,
+                            GPIO_PIN_RESET);
+}
+void setNumberOnClock(int index) {
+    clearAllClock();  // Tắt hết trước
+    HAL_GPIO_WritePin(GPIOA, (1 << index), GPIO_PIN_SET);  // Bật LED theo index
+}
 
+void updateClock(int hour, int minute, int second) {
+    clearAllClock();
+
+    int pos_sec  = second / 5;      // 0–11
+    int pos_min  = minute / 5;      // 0–11
+    int pos_hour = hour % 12;       // 0–11
+
+    // Tạo mảng map LED1..12
+    uint16_t led_map[12] = {
+        LED1_Pin, LED2_Pin, LED3_Pin, LED4_Pin,
+        LED5_Pin, LED6_Pin, LED7_Pin, LED8_Pin,
+        LED9_Pin, LED10_Pin, LED11_Pin, LED12_Pin
+    };
+
+    HAL_GPIO_WritePin(GPIOA, led_map[pos_sec], GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA, led_map[pos_min], GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA, led_map[pos_hour], GPIO_PIN_SET);
+}
 /* USER CODE END 0 */
 
 /**
@@ -92,17 +120,26 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int hour = 3, minute = 50, second = 0;
+
   while (1)
   {
-    /* USER CODE END WHILE */
-	  for (int i = 4; i <= 15; i++) {
-	          HAL_GPIO_WritePin(GPIOA, (1 << i), GPIO_PIN_SET);  // Bật LED
-	          HAL_Delay(200);                                    // Delay 200ms
-	          HAL_GPIO_WritePin(GPIOA, (1 << i), GPIO_PIN_RESET); // Tắt LED
-    /* USER CODE BEGIN 3 */
+    updateClock(hour, minute, second);
+
+    second++;
+    if (second >= 60) {
+        second = 0;
+        minute++;
+    }
+    if (minute >= 60) {
+        minute = 0;
+        hour++;
+    }
+    if (hour >= 12) {
+        hour = 0;
+    }
+    HAL_Delay(1000);   // mỗi giây
   }
-  /* USER CODE END 3 */
-}
 }
 /**
   * @brief System Clock Configuration
