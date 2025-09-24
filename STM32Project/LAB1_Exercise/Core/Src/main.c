@@ -95,12 +95,15 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  for (int i = 4; i <= 15; i++) {
+	          HAL_GPIO_WritePin(GPIOA, (1 << i), GPIO_PIN_SET);  // Bật LED
+	          HAL_Delay(200);                                    // Delay 200ms
+	          HAL_GPIO_WritePin(GPIOA, (1 << i), GPIO_PIN_RESET); // Tắt LED
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
-
+}
 /**
   * @brief System Clock Configuration
   * @retval None
